@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -46,5 +47,12 @@ public class UsersController {
     @DeleteMapping("/users/{id}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {
         return ResponseEntity.ok(Map.of("message", "name successfully deleted"));
+    }
+
+    @ExceptionHandler(Exception.class)
+    public Map<String, String> Exceptions(Exception ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("message", ex.getMessage());
+        return errors;
     }
 }
