@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -67,12 +69,14 @@ public class UsersController {
     }
 
     @ExceptionHandler({ConstraintViolationException.class})
-    public Map<String, String> handleConstraintViolation(ConstraintViolationException ex) {
-        Map<String, String> errors2 = new HashMap<>();
+    public List<Object> handleConstraintViolation(
+            ConstraintViolationException ex) {
+        List<Object> errors = new ArrayList<Object>();
         for (ConstraintViolation<?> violation : ex.getConstraintViolations()) {
-            String field = ((FieldError) violation).getField();
-            errors2.put(field, violation.getMessage());
+            errors.add(violation.getRootBeanClass().getName() + " " +
+                    violation.getPropertyPath() + ": " + violation.getMessage());
         }
-        return errors2;
+        return errors;
     }
+
 }
