@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SeventhHomemorkApplication {
+public class SeventhHomeworkApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SeventhHomemorkApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SeventhHomeworkApplication.class, args);
+    }
 
 }
