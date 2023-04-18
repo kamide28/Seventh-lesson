@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.Range;
 
 public class CreateForm {
     private @Length(max = 20, min = 1, message = "文字数異常です") String name;
-    private @Range(max = 150, min = 0, message = "ギネス記録になってしまいます") Integer age;
+    private @Range(max = 150, min = 0, message = "入力範囲を超えています") Integer age;
 
     public String getName() {
         return name;
